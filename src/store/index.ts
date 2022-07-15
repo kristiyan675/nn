@@ -1,7 +1,6 @@
 // import { createStore } from 'redux'
 
-import { createSlice } from '@reduxjs/toolkit'
-import { configureStore } from '@reduxjs/toolkit'
+import { createSlice, configureStore } from '@reduxjs/toolkit'
 
 const initialCounterState = { counter: 0, showCounter: true }
 const initialAuthState = { isAuthenticated: false }
@@ -26,7 +25,7 @@ const authSlice = createSlice({
     }
 })
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
         counter: counterSlice.reducer,
         auth: authSlice.reducer
@@ -35,7 +34,15 @@ const store = configureStore({
 
 export const counterActions = counterSlice.actions
 
-export default store;
+// export default store;
+
+export type RootState = ReturnType<typeof store.getState>
+
+
+
+// export type AppDispatch = typeof store.dispatch
+
+
 
 // const counterReducer = (state = initialState, action) => {
 //     if (action.type === 'increment') {
